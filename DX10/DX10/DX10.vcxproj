@@ -111,6 +111,9 @@
   <ItemGroup>
     <FxCompile Include="texture.fx" />
   </ItemGroup>
+  <ItemGroup>
+    <Image Include="data\seafloor.dds" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
