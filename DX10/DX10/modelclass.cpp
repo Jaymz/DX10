@@ -56,8 +56,8 @@ bool ModelClass::InitializeBuffers(ID3D10Device* device) {
 	D3D10_SUBRESOURCE_DATA vertexData, indexData;
 	HRESULT result;
 
-	m_vertexCount = 3;
-	m_indexCount = 3;
+	m_vertexCount = 5;
+	m_indexCount = 5;
 
 	vertices = new VertexType[m_vertexCount];
 	if (!vertices) {
@@ -72,15 +72,23 @@ bool ModelClass::InitializeBuffers(ID3D10Device* device) {
 	vertices[0].position = D3DXVECTOR3(-1.0f, -1.0f, 0.0f);
 	vertices[0].texture = D3DXVECTOR2(0.0f, 1.0f);
 
-	vertices[1].position = D3DXVECTOR3(0.0f, 1.0f, 0.0f);
-	vertices[1].texture = D3DXVECTOR2(0.5f, 0.0f);
+	vertices[1].position = D3DXVECTOR3(-1.0f, 1.0f, 0.0f);
+	vertices[1].texture = D3DXVECTOR2(0.0f, 0.0f);
 
-	vertices[2].position = D3DXVECTOR3(1.0f, -1.0f, 0.0f);
-	vertices[2].texture = D3DXVECTOR2(1.0f, 1.0f);
+	vertices[2].position = D3DXVECTOR3(1.0f, 1.0f, 0.0f);
+	vertices[2].texture = D3DXVECTOR2(1.0f, 0.0f);
+
+	vertices[3].position = D3DXVECTOR3(1.0f, -1.0f, 0.0f);
+	vertices[3].texture = D3DXVECTOR2(1.0f, 1.0f);
+
+	vertices[4].position = D3DXVECTOR3(-1.0f, -1.0f, 0.0f);
+	vertices[4].texture = D3DXVECTOR2(0.0f, 1.0f);
 
 	indices[0] = 0;
 	indices[1] = 1;
 	indices[2] = 2;
+	indices[3] = 3;
+	indices[4] = 4;
 
 	vertexBufferDesc.Usage = D3D10_USAGE_DEFAULT;
 	vertexBufferDesc.ByteWidth = sizeof(VertexType) * m_vertexCount;
@@ -148,7 +156,7 @@ void ModelClass::RenderBuffers(ID3D10Device* context) {
 
 	context->IASetIndexBuffer(m_indexBuffer, DXGI_FORMAT_R32_UINT, 0);
 
-	context->IASetPrimitiveTopology(D3D10_PRIMITIVE_TOPOLOGY_TRIANGLELIST);
+	context->IASetPrimitiveTopology(D3D10_PRIMITIVE_TOPOLOGY_TRIANGLESTRIP);
 
 	return;
 }
